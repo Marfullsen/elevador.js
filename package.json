@@ -1,6 +1,6 @@
 {
   "name": "elevator.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description":
     "Elevator.js fixes those awkward \"scroll to top\" moments the old fashioned way.",
   "keywords": ["scroll", "top", "elevator"],
