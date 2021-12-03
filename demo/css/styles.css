@@ -33,16 +33,49 @@ p {
     line-height: 35px
 }
 
-.down-arrow {
+.checkbox {
+    display: none;
+}
+
+.arrow {
     font-size: 120px;
     margin-top: 90px;
     margin-bottom: 90px;
     text-shadow: 0px -20px #0C1F31, 0px 0px #11c930;
     color: rgba(0,0,0,0);
+    transition: all 0.75s 0.25s;
+    -moz-transform: rotate(0deg) scaleY(0.8);
+    -webkit-transform: rotate(0deg) scaleY(0.8);
+    transform:rotate(0deg) scaleY(0.8);
+}
 
-    -webkit-transform: scaleY(0.8);
-    -moz-transform: scaleY(0.8);
-    transform: scaleY(0.8);
+.checkbox:checked + .arrow {
+    font-size: 120px;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    text-shadow: 0px -20px #ff3333, 0px 0px #000;
+    color: rgba(0,0,0,0);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform:rotate(180deg);
+}
+
+.down-arrow {
+    font-size: 120px;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    transform: rotate(0deg);
+    text-shadow: 0px -20px #0C1F31, 0px 0px #11c930;
+    color: rgba(0,0,0,0);
+}
+
+.up-arrow {
+    font-size: 120px;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    text-shadow: 0px -20px #ff3333, 0px 0px #000;
+    color: rgba(0,0,0,0);
+    transform: rotate(180deg);    
 }
 
 .footer {

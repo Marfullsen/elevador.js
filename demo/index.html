@@ -20,69 +20,105 @@
             <a href="http://Marfullsen.github.io">Traducido por Marfullsen</a> &bull; <a href="https://github.com/Marfullsen/elevador.js">Forkeado a Tim Holman</a> &bull; <a href="https://twitter.com/share" class="twitter-share-button" data-text='¡Con Elevador.js, los botones de "Ir arriba" se volvieron muy reales! -'  data-via="Marfullsen">Tweet</a>
         </div>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             Primero tenemos que llegar al final de la página.
         </p>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             Porque ya estás arriba.
         </p>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             Sino un botón para "volver arriba" no tendría sentido.
         </p>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             Baja, baja, baja.
         </p>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             Wow, todo este desplazamiento con el <i>scroll</i>.
         </p>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             Más vale que esto valga la pena.
         </p>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             Tomará bastante tiempo volver a arriba.
         </p>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             Si tan solo tuviéramos un método fácil de volver...
         </p>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             ...algún método que fuese funcional y divertido.
         </p>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             Así como cuando uso un botón en un ascensor para "volver arriba"...
         </p>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             ...debería existir algo igual.
         </p>
 
-        <div class="down-arrow">&#9660;</div>
+        <label for="checkbox">
+            <input type="checkbox" class="checkbox">
+            <div class="arrow">&#9660;</div>
+        </label>
         <p>
             Bien, aquí estamos... ¡haz click en aquel ascensor!
         </p>
 
         <div class="footer">
             <div class="do-the-thing">
-                <div class="btn-de-ascensor">
+                <div id="gatillador" class="btn-de-ascensor">
                     <div class="elevator">
                         <svg class="sweet-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" height="100px" width="100px">
                             <path d="M70,47.5H30c-1.4,0-2.5,1.1-2.5,2.5v40c0,1.4,1.1,2.5,2.5,2.5h40c1.4,0,2.5-1.1,2.5-2.5V50C72.5,48.6,71.4,47.5,70,47.5z   M47.5,87.5h-5v-25h5V87.5z M57.5,87.5h-5v-25h5V87.5z M67.5,87.5h-5V60c0-1.4-1.1-2.5-2.5-2.5H40c-1.4,0-2.5,1.1-2.5,2.5v27.5h-5  v-35h35V87.5z"/>
@@ -106,6 +142,31 @@
                 element: elementButton,
                 mainAudio: './music/elevator.mp3', // Music from http://www.bensound.com/
                 endAudio:  './music/ding.mp3'
+            });
+
+            function toggle() {
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                for (var i = 0; i < checkboxes.length; i++) {
+                    checkboxes[i].checked = !checkboxes[i].checked;
+                }
+            }
+
+            document.getElementById("gatillador").addEventListener("click", toggle, false);
+
+            var last_known_scroll_position = 0;
+            var ticking = false;
+
+            window.addEventListener('scroll', function(e) {
+            last_known_scroll_position = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                if (last_known_scroll_position === 0) {
+                    toggle();
+                }
+                ticking = false;
+                });
+            }
+            ticking = true;
             });
 
         </script>
