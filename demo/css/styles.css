@@ -47,15 +47,14 @@ p {
 
 .footer {
     box-sizing: border-box;
-    padding-top: 190px;
-    height: 300px;
+    padding: 90px;
 }
 
 .elevator {
     text-align: center;
     cursor: pointer;
-    width: 140px;
     margin: auto;
+    color: black;
 }
 
 .elevator:hover {
@@ -68,6 +67,18 @@ p {
     display: block;
     margin: auto;
     margin-bottom: 5px;
+}
+
+.do-the-thing {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-de-ascensor {
+    display: flex;
+    border: solid 2px black;
+    border-radius: 15px;
+    padding: 15px;
 }
 
 .github-link {
