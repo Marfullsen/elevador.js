@@ -1,21 +1,37 @@
-# elevator.js
-Finally, a "back to top" button that behaves like a real elevator, by adding elevator music to quietly soothe the awkwardness that can ensue when being smoothly scrolled to the top of the screen.
+# elevador.js
 
-This is very serious stuff, [here's a demo](http://tholman.com/elevator.js)!
+[![TestHere](https://img.shields.io/badge/Ver%20aquí-gh%20pages-green)](https://marfullsen.github.io/elevador.js)
+[![Forked](https://img.shields.io/badge/Forked%20from-tholman-blue)](https://github.com/tholman/elevator.js)
+[![Vanilla JS](http://vanilla-js.com/assets/button.png)](https://www.javascript.com/)
 
-### Instructions
+¡Finalmente, un botón de "volver arriba" que se comporta como un ascensor de verdad, añadiendo música de ascensor para calmar la incomodidad que puede producirse cuando se desplaza suavemente a la parte superior de la pantalla!
 
-`Elevator.js` is a stand alone library (no jquery, or the likes) so usage is pretty straight forward. All styling of elements is up to you. `Elevator.js` only handles the audio management, and the scroll functionality!
+<p align="center">
+  <a href="https://marfullsen.github.io/elevador.js" rel="noopener">
+ <img src="./docs/img/triangle.png" alt="Botones de ascensor"></a>
+</p>
 
-#### JS
+Esto es algo muy serio, ¡[prueba la demo aquí](https://marfullsen.github.io/elevador.js)! (versión mejorada por Marfullsen).
 
-`Elevator.js` lives entirely within the js realm, which makes things fairly simple to use.
+## ¿Qué es `Elevador.js`?
+Elevador.js es una mejora realizada a la librería [Elevator.js](https://github.com/tholman/elevator.js) (nótese la traducción). Esta mejora incluye la traducción al español y añade un cambio de colores además de una animación de movimiento en 180 grados de los triángulos del sitio de presentación.
 
-You'll need to create a new instance of `Elevator`, and pass it some audio elements.
+### Instrucciones
+
+`Elevator.js` es una librería independiente (sin jquery o similares), por lo que su uso es bastante sencillo. Todo el estilo de los elementos depende de ti. `Elevator.js` sólo se encarga de la gestión del audio, y de la funcionalidad del desplazamiento.
+
+#### JavaScript
+
+La librería `Elevator.js` reside dentro del universo de JavaScript, lo que la hace bastante simple.
+
+Tendrás que crear una nueva instancia de `Elevator`, y pasarle algunos elementos de audio.
 
 ```html
+<!-- JS -->
+<script src='elevator.js'></script>
+
 <script>
-// Elevator script included on the page, already.
+// Se asume que el script de 'Elevator' está incluido.
 
 window.onload = function() {
   var elevator = new Elevator({
@@ -24,17 +40,17 @@ window.onload = function() {
   });
 }
 
-// You can run the elevator, by calling.
+// Ahora puedes ejecutar el elevador ejecuntando la siguiente función.
 elevator.elevate();
 </script>
 ```
 
-You can also add an "element" option, clicking this element will invoke the "Scroll to top" functionality, we all love and crave.
+También puedes añadir una opción "para algún elemento", al hacer click en este elemento se invocará la funcionalidad de "Desplazamiento hacia arriba".
 ```html
-<div class="elevator-button">Back to Top</div>
+<div class="elevator-button">Volver arriba</div>
 
 <script>
-// Elevator script included on the page, already.
+// con el script de Elevator ya incluido en la página.
 
 window.onload = function() {
   var elevator = new Elevator({
@@ -46,12 +62,12 @@ window.onload = function() {
 </script>
 ```
 
-If you don't want to scroll to the top, a custom target can be specified by adding a "targetElement" option:
+En caso que no quieras desplazarte a la parte superior, puedes especificar un objetivo personalizado añadiendo una opción "targetElement":
 ```html
-<div class="elevator-button">Take the elevator to the target</div>
+<div class="elevator-button">Tomar el ascensor hasta el objetivo</div>
 
 <script>
-// Elevator script included on the page, already.
+// Se asume que el script de 'Elevator' está incluido.
 
 window.onload = function() {
   var elevator = new Elevator({
@@ -64,19 +80,18 @@ window.onload = function() {
 </script>
 ```
 
-If you want to scroll to a point on the page with some extra padding on the top, simply add the "verticalPadding" option:
-
+Si quieres desplazarte a un punto de la página con un poco de _padding_ (relleno) extra en la parte superior, simplemente añade la opción "verticalPadding":
 ```html
-<div class="elevator-button">Take the elevator to the target</div>
+<div class="elevator-button">Tomar el ascensor hasta el objetivo</div>
 
 <script>
-// Elevator script included on the page, already.
+// Se asume que el script de 'Elevator' está incluido.
 
 window.onload = function() {
   var elevator = new Elevator({
     element: document.querySelector('.elevator-button'),
     targetElement: document.querySelector('#elevator-target'),
-    verticalPadding: 100,  // in pixels
+    verticalPadding: 100,  // en pixeles
     mainAudio: '/src/to/audio.mp3',
     endAudio: '/src/to/end-audio.mp3'
   });
@@ -84,23 +99,23 @@ window.onload = function() {
 </script>
 ```
 
-If you're really serious (boring), you don't have to use audio... and can also set a fixed time to scroll to the top
+Si eres realmente serio (aburrido), no tienes que usar el audio... de igual manera puedes establecer un tiempo fijo para desplazarte a la parte superior
 ```html
-<div class="elevator-button">Back to Top</div>
+<div class="elevator-button">Volver arriba</div>
 
 <script>
-// Elevator script included on the page, already.
+// Se asume que el script de 'Elevator' está incluido.
 
 window.onload = function() {
   var elevator = new Elevator({
     element: document.querySelector('.elevator-button'),
-    duration: 1000 // milliseconds
+    duration: 1000 // milisegundos
   });
 }
 </script>
 ```
 
-If you use elevator.js in combination with other code, you might want to use callbacks
+Si utilizas elevator.js en combinación con otro código, es posible que quieras utilizar callbacks:
 ```html
 <script>
 window.onload = function() {
@@ -110,10 +125,10 @@ window.onload = function() {
        endAudio: '/src/to/end-audio.mp3',
        duration: 5000,
        startCallback: function() {
-         // is called, when the elevator starts moving
+         // se ejecuta cuando el ascensor comienza a moverse.
        },
        endCallback: function() {
-         // is called, when the elevator reached target level
+         // se ejecuta cuando el ascensor alcanza el nivel esperado.
        }
    });
 }
@@ -121,12 +136,20 @@ window.onload = function() {
 ```
 
 ### NPM
-The package is also available via [NPM](https://www.npmjs.com/package/elevator.js)
+El paquete también está disponible a través de [NPM](https://www.npmjs.com/package/elevator.js)
 
-### License
+### Licencia
 
-Elevator.js is covered by the MIT License.
+Elevator.js está bajo licencia **MIT**.
 
-Audio in the Demo was bought via [Pond5](https://www.pond5.com/stock-music/11517192/elevator-bossa-nova.html), you will need to license your own.
+El audio de la demo se adquirió a través de [Pond5](https://www.pond5.com/stock-music/11517192/elevator-bossa-nova.html), para usarlo se necesitará adquirir una licensia propia.
 
-Copyright (C) ~ [Tim Holman](http://tholman.com) ~ timothy.w.holman@gmail.com
+Derechos reservados © ~ [Tim Holman](http://tholman.com) ~ timothy.w.holman@gmail.com
+
+### References
+
+- [elevator.js by tholman.com](https://tholman.com/elevator.js/)
+- [css3-rotate-animation](https://stackoverflow.com/questions/16771225/css3-rotate-animation)
+- [Rotate without JS](https://codepen.io/anon/pen/yNpvxb?editors=1111)
+- [Checkbox implementation](https://stackoverflow.com/questions/386281/how-to-implement-select-all-check-box-in-html)
+- [Scroll event](https://developer.mozilla.org/es/docs/Web/API/Document/scroll_event)
